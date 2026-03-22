@@ -27,9 +27,3 @@ Bus Duty is a 3D bus driving mobile game. The player drives a bus through routes
 
 ## Demo Video
 > [Watch Demo](your-youtube-link-here)
-
-## License
-This project is for portfolio purposes only.
-Do not copy, reuse, or distribute without permission.
-© 2026 Mohammad Noman
- 
