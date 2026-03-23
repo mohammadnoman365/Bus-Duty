@@ -30,7 +30,6 @@ public class StudentsManager : MonoBehaviour
     void Start()
     {
         doorButton.SetActive(false);
-        // Initilizing the variables at start of the game
         studentsCollected = 0;
         busHealth = 100;
         studentsCollectedText.text = "Students on Bus: " + studentsCollected.ToString();
@@ -40,10 +39,8 @@ public class StudentsManager : MonoBehaviour
         gameOverPanel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Show winning panel when 30 students are collected
         if (studentsCollected >= 30)
         {
             audioSource.PlayOneShot(winningSound);
@@ -51,13 +48,11 @@ public class StudentsManager : MonoBehaviour
         }
     }
 
-    // Collision detection with building and car
     private float lastDamageTime;
-    private float damageCooldown = 0.5f; // Half a second delay
+    private float damageCooldown = 0.5f;
 
     void OnCollisionEnter(Collision collision)
     {
-        // Prevents multiple damage instances in a short time
         if (Time.time - lastDamageTime < damageCooldown)
             return; 
 
@@ -66,7 +61,6 @@ public class StudentsManager : MonoBehaviour
 
             crashSound.Play();
             busHealth -= 10;
-            // Update last damage time
             lastDamageTime = Time.time; 
 
             collisionText.SetActive(true);
@@ -87,7 +81,6 @@ public class StudentsManager : MonoBehaviour
     }
 
 
-    // Trigger detection with road signs to assign students to the bus
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BusRoadSign1"))
@@ -132,7 +125,6 @@ public class StudentsManager : MonoBehaviour
         }
     }
 
-    // Funtion to hide students
     public void HideStudents()
     {
         students = GameObject.FindGameObjectsWithTag(studentTag);
@@ -147,7 +139,6 @@ public class StudentsManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Function to update the UI
     void UpdateUI()
     {
         studentsCollectedText.text = "Students on Bus: " + studentsCollected;
